@@ -131,19 +131,19 @@ public class VolcanoAnalyzerTests {
         // Teardown
     }
 
-    // @Test
-    // public void mostCommonType() {
-    // //Setup
-    // String expected = "Stratovolcano";
+    @Test
+    public void mostCommonType() {
+        // Setup
+        String expected = "Stratovolcano";
 
-    // //Execute
-    // String actual = va.mostCommonType();
+        // Execute
+        String actual = va.mostCommonType();
 
-    // //Assert
-    // assertEquals( expected, actual, "should be Stratovolcano");
+        // Assert
+        assertEquals(expected, actual, "should be Stratovolcano");
 
-    // //Teardown
-    // }
+        // Teardown
+    }
 
     @Test
     public void eruptionsByCountry() {
@@ -243,20 +243,18 @@ public class VolcanoAnalyzerTests {
         // Teardown
     }
 
-    // @Test
-    // public void topAgentsOfDeath() {
-    // //Setup
-    // String[] expected = { "P", "M", "W", "A", "I" };
+    @Test
+    public void topAgentsOfDeath() {
+        // Setup
+        String[] expected = { "P", "M", "W", "A", "I" };
 
-    // //Execute
-    // String[] actual = va.topAgentsOfDeath();
+        // Execute
+        String[] actual = va.topAgentsOfDeath();
 
-    // //Assert
-    // assertEquals( expected.length, actual.length, "should have 5 Agents of
-    // Death");
-    // assertArrayEquals(expected, actual, "should have the correct Agents of
-    // Death");
+        // Assert
+        assertEquals(expected.length, actual.length, "should have 5 Agents of Death");
+        assertArrayEquals(expected, actual, "should have the correct Agents of Death");
 
-    // //Teardown
-    // }
+        // Teardown
+    }
 }

@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -48,18 +49,22 @@ public class VolcanoAnalyzer {
     }
 
     public Double causedTsunami() {
-        double value = volcanos.stream().filter(v -> v.getTsu().equals("tsu")).count();
-        return value / volcanos.size() * 100;
+        double x = volcanos.stream().filter(v -> v.getTsu().equals("tsu")).count();
+        return x / volcanos.size() * 100;
     }
-    // add methods here to meet the requirements in README.md
 
-    // public String mostCommonType() {
-    // return volcanos.stream().map(Volcano :: getType).grouping
-    // }
+    public String mostCommonType() {
+        return volcanos.stream()
+                .collect(Collectors.groupingBy(Volcano::getType, Collectors.counting()))
+                .entrySet().stream()
+                .max(Comparator.comparingLong(Map.Entry::getValue))
+                .map(Map.Entry::getKey)
+                .orElse(null);
+    }
 
     public Double percentNorth() {
-        double value = volcanos.stream().filter(v -> v.getLatitude() > 0).count();
-        return value / volcanos.size() * 100;
+        double x = volcanos.stream().filter(v -> v.getLatitude() > 0).count();
+        return x / volcanos.size() * 100;
     }
 
     public Long eruptionsByCountry(String Country) {
@@ -83,6 +88,10 @@ public class VolcanoAnalyzer {
 
     public String[] elevatedVolcanoes(double x) {
         return volcanos.stream().filter(v -> v.getElevation() > x).map(Volcano::getName).toArray(String[]::new);
+    }
+
+    public String[] topAgentsOfDeath() {
+
     }
 
 }
