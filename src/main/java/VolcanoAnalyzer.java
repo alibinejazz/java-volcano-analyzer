@@ -43,9 +43,35 @@ public class VolcanoAnalyzer {
         return volcanos.stream().filter(v -> v.getVEI() >= 6).map(Volcano::getName).toArray(String[]::new);
     }
 
-    public Volcano mostDeadly() {
-        return volcanos.stream().max(Comparator.comparing(Volcano::getDEATHS)).orElseThrow(null);
+    // public String mostDeadly() {
+    // // return
+    // //
+    // volcanos.stream().max(Comparator.comparing(Volcano::getDEATHS)).orElseThrow(null);
+    // }
+
+    public Double causedTsunami() {
+        double value = volcanos.stream().filter(v -> v.getTsu().equals("tsu")).count();
+        return value / volcanos.size() * 100;
     }
     // add methods here to meet the requirements in README.md
 
+    public String mostCommonType() {
+    }
+
+    public Double percentNorth() {
+        double value = volcanos.stream().filter(v -> v.getLatitude() > 0).count();
+        return value / volcanos.size() * 100;
+    }
+
+    public Long eruptionsByCountry(String Country) {
+        return volcanos.stream().filter(v -> v.getCountry().equalsIgnoreCase(Country)).count();
+    }
+
+    public Double averageElevation() {
+        return volcanos.stream().mapToDouble(Volcano::getElevation).average().orElseThrow(null);
+    }
+
+    public String[] volcanoTypes() {
+        return volcanos.stream().map(Volcano::getType).distinct().toArray(String[]::new);
+    }
 }

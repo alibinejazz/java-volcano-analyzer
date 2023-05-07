@@ -127,19 +127,19 @@ public class VolcanoAnalyzerTests {
     // // Teardown
     // }
 
-    // @Test
-    // public void causedTsunami() {
-    // //Setup
-    // double expected = 17;
+    @Test
+    public void causedTsunami() {
+        // Setup
+        double expected = 17;
 
-    // //Execute
-    // double actual = va.causedTsunami();
+        // Execute
+        double actual = va.causedTsunami();
 
-    // //Assert
-    // assertEquals( expected, actual, .1, "should be about 17.0 percent");
+        // Assert
+        assertEquals(expected, actual, .1, "should be about 17.0 percent");
 
-    // //Teardown
-    // }
+        // Teardown
+    }
 
     // @Test
     // public void mostCommonType() {
@@ -155,70 +155,69 @@ public class VolcanoAnalyzerTests {
     // //Teardown
     // }
 
-    // @Test
-    // public void eruptionsByCountry() {
-    // //Setup
-    // int expected1 = 47;
-    // int expected2 = 189;
-    // int expected3 = 0;
+    @Test
+    public void eruptionsByCountry() {
+        // Setup
+        int expected1 = 47;
+        int expected2 = 189;
+        int expected3 = 0;
 
-    // //Execute
-    // int actual1 = va.eruptionsByCountry("United States");
-    // int actual2 = va.eruptionsByCountry("Indonesia");
-    // int actual3 = va.eruptionsByCountry("Zimbabwe");
+        // Execute
+        long actual1 = va.eruptionsByCountry("United States");
+        long actual2 = va.eruptionsByCountry("Indonesia");
+        long actual3 = va.eruptionsByCountry("Zimbabwe");
 
-    // //Assert
-    // assertEquals(expected1, actual1, "should be 47 eruptions in United States");
-    // assertEquals( expected2, actual2, "should be 189 eruptions in Indonesia");
-    // assertEquals( expected3, actual3, "should be 0 eruptions in Zimbabwe");
-    // //Teardown
-    // }
+        // Assert
+        assertEquals(expected1, actual1, "should be 47 eruptions in United States");
+        assertEquals(expected2, actual2, "should be 189 eruptions in Indonesia");
+        assertEquals(expected3, actual3, "should be 0 eruptions in Zimbabwe");
+        // Teardown
+    }
 
-    // @Test
-    // public void averageElevation() {
-    // //Setup
-    // double expected = 1993.71;
+    @Test
+    public void averageElevation() {
+        // Setup
+        double expected = 1993.71;
 
-    // //Execute
-    // double actual = va.averageElevation();
+        // Execute
+        double actual = va.averageElevation();
 
-    // //Assert
-    // assertEquals( expected, actual, .1, "should be about 1993.71");
+        // Assert
+        assertEquals(expected, actual, .1, "should be about 1993.71");
 
-    // //Teardown
-    // }
+        // Teardown
+    }
 
-    // @Test
-    // public void volcanoTypes() {
-    // //Setup
-    // String[] expected = { "Caldera", "Stratovolcano", "Complex volcano", "Shield
-    // volcano", "Pyroclastic shield", "Volcanic field", "Lava dome", "Subglacial
-    // volcano", "Crater rows", "Tuff cone", "Fissure vent", "Pyroclastic cone",
-    // "Submarine volcano", "Lava cone", "Pumice cone", "Mud volcano", "Cinder
-    // cone", "Compound volcano", "Maar"};
-    // //Execute
-    // String[] actual = va.volcanoTypes();
+    @Test
+    public void volcanoTypes() {
+        // Setup
+        String[] expected = { "Caldera", "Stratovolcano", "Complex volcano", "Shield volcano", "Pyroclastic shield",
+                "Volcanic field", "Lava dome", "Subglacial volcano", "Crater rows", "Tuff cone", "Fissure vent",
+                "Pyroclastic cone", "Submarine volcano", "Lava cone", "Pumice cone", "Mud volcano", "Cinder cone",
+                "Compound volcano", "Maar" };
+        // Execute
+        String[] actual = va.volcanoTypes();
 
-    // //Assert
-    // assertEquals(expected.length, actual.length, "should have 19 volcano types");
-    // assertArrayEquals(expected, actual, "should have the correct volcano types");
+        // Assert
+        assertEquals(expected.length, actual.length, "should have 19 volcano types");
+        assertArrayEquals(expected, actual, "should have the correct volcano types");
 
-    // //Teardown
-    // }
+        // Teardown
+    }
 
-    // @Test
-    // public void percentNorth() {
-    // //Setup
-    // double expected = 64.55;
+    @Test
+    public void percentNorth() {
+        // Setup
+        double expected = 64.55;
 
-    // //Execute
-    // double actual = va.percentNorth();
+        // Execute
+        double actual = va.percentNorth();
 
-    // //Assert
-    // assertEquals( expected, actual, .1, "should be about 64.55 percent");
+        // Assert
+        assertEquals(expected, actual, .1, "should be about 64.55 percent");
 
-    // //Teardown
-    // }
+        // Teardown
+    }
 
     // @Test
     // public void manyFilters() {
