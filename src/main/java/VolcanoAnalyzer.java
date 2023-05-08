@@ -45,7 +45,9 @@ public class VolcanoAnalyzer {
     }
 
     public Volcano mostDeadly() {
-        return volcanos.stream().min(Comparator.comparing(Volcano::getDEATHS)).orElseThrow(null);
+        // return volcanos.stream().max(Comparator.comparingInt(v-> Integer.parseInt(v.getDEATHS()))).orElseThrow(null);
+        return volcanos.stream()
+        .max(Comparator.comparingInt(v -> Integer.parseInt(v.getDEATHS().isEmpty() ? "0" : v.getDEATHS()))).orElseThrow(null);
     }
 
     public Double causedTsunami() {
@@ -60,7 +62,7 @@ public class VolcanoAnalyzer {
                 .max(Comparator.comparingLong(Map.Entry::getValue))
                 .map(Map.Entry::getKey)
                 .orElse(null);
-    }
+            }
 
     public Double percentNorth() {
         double x = volcanos.stream().filter(v -> v.getLatitude() > 0).count();
@@ -90,8 +92,8 @@ public class VolcanoAnalyzer {
         return volcanos.stream().filter(v -> v.getElevation() > x).map(Volcano::getName).toArray(String[]::new);
     }
 
-    public String[] topAgentsOfDeath() {
+    // public String[] topAgentsOfDeath() {
 
-    }
+    // }
 
 }
