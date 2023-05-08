@@ -3,6 +3,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
@@ -36,7 +37,7 @@ public class VolcanoAnalyzer {
 
     public List<Volcano> eruptedInEighties() {
         return volcanos.stream()
-                .filter(n -> n.getYear() >= 1980 && n.getYear() <= 1989)
+                .filter(n -> n.getYear() >= 1980 && n.getYear() < 1990)
                 .collect(Collectors.toList());
     }
 
@@ -47,7 +48,7 @@ public class VolcanoAnalyzer {
     public Volcano mostDeadly() {
         // return volcanos.stream().max(Comparator.comparingInt(v-> Integer.parseInt(v.getDEATHS()))).orElseThrow(null);
         return volcanos.stream()
-        .max(Comparator.comparingInt(v -> Integer.parseInt(v.getDEATHS().isEmpty() ? "0" : v.getDEATHS()))).orElseThrow(null);
+        .max(Comparator.comparingInt(v -> Integer.parseInt(v.getDEATHS().isEmpty() ? "0" : v.getDEATHS()))).orElse(null);
     }
 
     public Double causedTsunami() {
@@ -92,8 +93,14 @@ public class VolcanoAnalyzer {
         return volcanos.stream().filter(v -> v.getElevation() > x).map(Volcano::getName).toArray(String[]::new);
     }
 
-    // public String[] topAgentsOfDeath() {
 
-    // }
+    public String[] topAgentsOfDeath(){
+        return volcanos.stream().filter(v-> !v.getDEATHS().isEmpty()).sorted((i,j) -> Integer.parseInt(j.getDEATHS()) - Integer.parseInt(i.getDEATHS()))
+        .limit(10).filter(v -> !v.getAgent().isEmpty())
+        .map(v -> Arrays.asList(v.getAgent().split(","))).flatMap(List::stream)
+        .distinct()
+        .collect(Collectors.toList())
+        .toArray(new String[0]);
+    }
 
 }
